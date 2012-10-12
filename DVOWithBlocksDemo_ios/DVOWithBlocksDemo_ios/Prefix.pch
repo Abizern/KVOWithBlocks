@@ -2,8 +2,7 @@
 // Prefix header for all source files of the 'DVOWithBlocksDemo_ios' target in the 'DVOWithBlocksDemo_ios' project
 //
 
-#import <Availability.h>
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "CommonMacros.h"
 

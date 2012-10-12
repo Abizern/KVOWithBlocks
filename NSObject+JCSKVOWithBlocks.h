@@ -21,6 +21,15 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //  
 
+#if !__has_feature(objc_arc)
+#warning "NSObject+JCSKVOWithBlocks only runs under ARC."
+#endif
+
+// Define the version for this category
+#ifndef nsobject_jcskvowithblocks
+#define nsobject_jcskvowithblocks_1_0  10000
+#define nsobject_jcskvowithblocks      nsobject_jcskvowithblocks_1_0
+#endif
 
 #import <Foundation/Foundation.h>
 

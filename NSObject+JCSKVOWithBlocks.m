@@ -24,7 +24,13 @@
 
 
 #import "NSObject+JCSKVOWithBlocks.h"
+#import "CommonMacros.h"
 
 @implementation NSObject (JCSKVOWithBlocks)
 
 @end
+
+// Make sure dependencies are set up
+#ifndef jcscommonmacros
+#warning "NSObject+JCSKVOWithBlocks needs to import the CommonMacros.h file, which is available at https://gist.github.com/325926"
+#endif

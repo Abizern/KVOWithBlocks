@@ -51,6 +51,7 @@
 		ADAD2F3816285ABF0013264B /* KVOWithBlocksTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVOWithBlocksTests.m; path = ../../Tests/KVOWithBlocksTests.m; sourceTree = "<group>"; };
 		ADAD2F4116285BE80013264B /* NSObject+JCSKVOWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JCSKVOWithBlocks.h"; path = "../../NSObject+JCSKVOWithBlocks.h"; sourceTree = "<group>"; };
 		ADAD2F4216285BE80013264B /* NSObject+JCSKVOWithBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JCSKVOWithBlocks.m"; path = "../../NSObject+JCSKVOWithBlocks.m"; sourceTree = "<group>"; };
+		ADAD2F491628692D0013264B /* CommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonMacros.h; path = ../../CommonCode/CommonMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +129,7 @@
 		ADAD2EAE162857570013264B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD2F491628692D0013264B /* CommonMacros.h */,
 				ADAD2EAF162857570013264B /* Info.plist */,
 				ADAD2EB0162857570013264B /* InfoPlist.strings */,
 				ADAD2EB3162857570013264B /* main.m */,
