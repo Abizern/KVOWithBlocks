@@ -24,6 +24,8 @@
 		ADAD2F191628577D0013264B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAD2F171628577D0013264B /* InfoPlist.strings */; };
 		ADAD2F3B16285AEE0013264B /* SynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3A16285AEE0013264B /* SynchronousTests.m */; };
 		ADAD2F4016285BDA0013264B /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
+		ADCBF6C91651275A00BEAEC4 /* AsynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */; };
+		ADCBF6CD1651276A00BEAEC4 /* ObservedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6CC1651276A00BEAEC4 /* ObservedClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,9 @@
 		ADAD2F3E16285BDA0013264B /* NSObject+JCSKVOWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JCSKVOWithBlocks.h"; path = "../../NSObject+JCSKVOWithBlocks.h"; sourceTree = "<group>"; };
 		ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JCSKVOWithBlocks.m"; path = "../../NSObject+JCSKVOWithBlocks.m"; sourceTree = "<group>"; };
 		ADAD2F4A162869420013264B /* CommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonMacros.h; path = ../../CommonCode/CommonMacros.h; sourceTree = "<group>"; };
+		ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsynchronousTests.m; path = ../../Tests/AsynchronousTests.m; sourceTree = "<group>"; };
+		ADCBF6CB1651276A00BEAEC4 /* ObservedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObservedClass.h; path = ../../Tests/ObservedClass.h; sourceTree = "<group>"; };
+		ADCBF6CC1651276A00BEAEC4 /* ObservedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObservedClass.m; path = ../../Tests/ObservedClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +156,7 @@
 			children = (
 				ADAD2F4C162876C30013264B /* Test Helpers */,
 				ADAD2F3A16285AEE0013264B /* SynchronousTests.m */,
+				ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */,
 				ADAD2F151628577D0013264B /* Supporting Files */,
 			);
 			name = Tests;
@@ -178,6 +184,8 @@
 		ADAD2F4C162876C30013264B /* Test Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ADCBF6CB1651276A00BEAEC4 /* ObservedClass.h */,
+				ADCBF6CC1651276A00BEAEC4 /* ObservedClass.m */,
 			);
 			name = "Test Helpers";
 			sourceTree = "<group>";
@@ -296,6 +304,8 @@
 				ADAD2EFB1628577C0013264B /* AppDelegate.m in Sources */,
 				ADAD2F071628577C0013264B /* ViewController.m in Sources */,
 				ADAD2F4016285BDA0013264B /* NSObject+JCSKVOWithBlocks.m in Sources */,
+				ADCBF6C91651275A00BEAEC4 /* AsynchronousTests.m in Sources */,
+				ADCBF6CD1651276A00BEAEC4 /* ObservedClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

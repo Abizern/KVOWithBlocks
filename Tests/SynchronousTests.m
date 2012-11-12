@@ -5,7 +5,7 @@
 //  Created by Abizer Nasir on 12/10/2012.
 //  Copyright (c) 2012 Jungle Candy Software. All rights reserved.
 //
-//  Unit tests for the NSObject+JCSKVOWithBlocks class
+//  Unit tests for the NSObject+JCSKVOWithBlocks class category
 //  These unit tests are common between the iOS and OS X demo projects.
 //
 
@@ -14,15 +14,12 @@ static NSString * const kNumberObservationKey = @"_observee.number";
 #import <SenTestingKit/SenTestingKit.h>
 #import "NSObject+JCSKVOWithBlocks.h"
 
-#pragma mark - Class that has properties to be observed
-
 #import "ObservedClass.h"
+
 
 @interface SynchronousTests : SenTestCase
 @property (copy, nonatomic) NSString *observedValueAsString;
 @end
-
-#pragma mark - Unit Test Class
 
 @implementation SynchronousTests {
     ObservedClass *_observee;

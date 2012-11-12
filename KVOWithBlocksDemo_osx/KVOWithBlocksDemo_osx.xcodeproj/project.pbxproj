@@ -19,6 +19,7 @@
 		ADAD2F3916285ABF0013264B /* SynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3816285ABF0013264B /* SynchronousTests.m */; };
 		ADAD2F4316285BE80013264B /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F4216285BE80013264B /* NSObject+JCSKVOWithBlocks.m */; };
 		ADAD2F4F162876F50013264B /* ObservedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F4E162876F50013264B /* ObservedClass.m */; };
+		ADCBF6C61651253E00BEAEC4 /* AsynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6C51651253E00BEAEC4 /* AsynchronousTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		ADAD2F491628692D0013264B /* CommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonMacros.h; path = ../../CommonCode/CommonMacros.h; sourceTree = "<group>"; };
 		ADAD2F4D162876F50013264B /* ObservedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObservedClass.h; path = ../../Tests/ObservedClass.h; sourceTree = "<group>"; };
 		ADAD2F4E162876F50013264B /* ObservedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObservedClass.m; path = ../../Tests/ObservedClass.m; sourceTree = "<group>"; };
+		ADCBF6C51651253E00BEAEC4 /* AsynchronousTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsynchronousTests.m; path = ../../Tests/AsynchronousTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				ADAD2F4B162876A90013264B /* Test Helpers */,
 				ADAD2F3816285ABF0013264B /* SynchronousTests.m */,
+				ADCBF6C51651253E00BEAEC4 /* AsynchronousTests.m */,
 				ADAD2ECB162857570013264B /* Supporting Files */,
 			);
 			name = Tests;
@@ -300,6 +303,7 @@
 			files = (
 				ADAD2F3916285ABF0013264B /* SynchronousTests.m in Sources */,
 				ADAD2F4F162876F50013264B /* ObservedClass.m in Sources */,
+				ADCBF6C61651253E00BEAEC4 /* AsynchronousTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
