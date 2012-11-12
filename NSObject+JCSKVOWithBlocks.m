@@ -20,13 +20,126 @@
 //  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//  
+//
+
+// The context for a KVO observations
+static NSString * const JCSKVOWithBlocksObservationContext = @"JCSKVOWithBlocksObservationContext";
+
+// The key under which the array of observers is stored in associated objects
+static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.junglecandy.jcskvowithblocks";
 
 
 #import "NSObject+JCSKVOWithBlocks.h"
+#import <objc/runtime.h>
 #import "CommonMacros.h"
 
+#pragma mark JCSKVOObserver
+
+// This is the class that does the actual observing.
+
+@interface JCSKVOObserver : NSObject
+
+@property (nonatomic, readonly) NSString *observedKeyPath;
+- (id)initWithKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions) options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block;
+
+@end
+
+
+@implementation JCSKVOObserver {
+    NSKeyValueObservingOptions _options;
+    NSOperationQueue *_queue;
+    jcsObservationBlock _block;
+}
+
+- (id)initWithKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions) options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block {
+    // It doesn't make sense to pass nil instead of a block for this category
+    NSParameterAssert(block);
+
+    self = [super init];
+    _observedKeyPath = [keyPath copy];
+    _options = options;
+    _queue = queue;
+    _block = [block copy];
+
+    return self;
+}
+
+#pragma mark - NSKeyValueObserving
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (!(context == (__bridge void *)(JCSKVOWithBlocksObservationContext))) {
+        return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+
+    if (!_queue) {
+        return _block(change);
+    }
+
+    return [_queue addOperationWithBlock:^{
+        _block(change);
+    }];
+}
+
+@end
+
+#pragma mark - NSObject Category
+
 @implementation NSObject (JCSKVOWithBlocks)
+
+#pragma mark - Registering for observations
+
+- (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block {
+    id observer = [[JCSKVOObserver alloc] initWithKeyPath:keyPath options:options queue:queue block:block];
+
+    [self addObserver:observer forKeyPath:keyPath options:options context:(__bridge void *)(JCSKVOWithBlocksObservationContext)];
+
+    dispatch_sync([self jcsKVOWithBlocksQueue], ^{
+        NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
+
+        if (!observers) {
+            observers = [NSMutableArray new];
+            objc_setAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey), observers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+
+        [observers addObject:observer];
+    });
+
+    return observer;
+}
+
+- (id)jcsAddObserverForKeyPath:(NSString *)keyPath withBlock:(jcsObservationBlock)block {
+    return [self jcsAddObserverForKeyPath:keyPath options:0 queue:nil block:block];
+}
+
+#pragma mark - Unregistering for observations
+
+- (void)jcsRemoveObserver:(id)observer {
+    ZAssert([observer isMemberOfClass:[JCSKVOObserver class]], @"The observer has to be an instance of JCSKVOObserver");
+    
+    dispatch_sync([self jcsKVOWithBlocksQueue], ^{
+        NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
+
+        if (!observers || ![observers containsObject:observer]) {
+            return;
+        }
+
+        [self removeObserver:observer forKeyPath:[observer observedKeyPath]];
+        [observers removeObjectIdenticalTo:observer];
+    });
+}
+
+#pragma mark - Private methods
+
+- (dispatch_queue_t)jcsKVOWithBlocksQueue {
+    static dispatch_queue_t queue = NULL;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        queue = dispatch_queue_create("com.junglecandy.jcskvowithblocksqueue", 0);
+    });
+
+    return queue;
+}
 
 @end
 

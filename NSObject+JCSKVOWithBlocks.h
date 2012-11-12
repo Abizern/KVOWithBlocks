@@ -25,6 +25,8 @@
 #warning "NSObject+JCSKVOWithBlocks only runs under ARC."
 #endif
 
+typedef void (^jcsObservationBlock)(NSDictionary *change);
+
 // Define the version for this category
 #ifndef nsobject_jcskvowithblocks
 #define nsobject_jcskvowithblocks_1_0  10000
@@ -34,5 +36,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (JCSKVOWithBlocks)
+
+
+- (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block;
+- (id)jcsAddObserverForKeyPath:(NSString *)keyPath withBlock:(jcsObservationBlock)block;
+- (void)jcsRemoveObserver:(id)observer;
 
 @end

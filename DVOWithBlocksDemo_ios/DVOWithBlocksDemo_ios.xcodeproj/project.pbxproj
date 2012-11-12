@@ -22,7 +22,7 @@
 		ADAD2F101628577D0013264B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEA1628577C0013264B /* UIKit.framework */; };
 		ADAD2F111628577D0013264B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEC1628577C0013264B /* Foundation.framework */; };
 		ADAD2F191628577D0013264B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAD2F171628577D0013264B /* InfoPlist.strings */; };
-		ADAD2F3B16285AEE0013264B /* KVOWithBlocksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3A16285AEE0013264B /* KVOWithBlocksTests.m */; };
+		ADAD2F3B16285AEE0013264B /* SynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3A16285AEE0013264B /* SynchronousTests.m */; };
 		ADAD2F4016285BDA0013264B /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,7 @@
 		ADAD2F0E1628577D0013264B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADAD2F161628577D0013264B /* DVOWithBlocksDemo_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DVOWithBlocksDemo_iosTests-Info.plist"; sourceTree = "<group>"; };
 		ADAD2F181628577D0013264B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		ADAD2F3A16285AEE0013264B /* KVOWithBlocksTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KVOWithBlocksTests.m; path = ../../Tests/KVOWithBlocksTests.m; sourceTree = "<group>"; };
+		ADAD2F3A16285AEE0013264B /* SynchronousTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronousTests.m; path = ../../Tests/SynchronousTests.m; sourceTree = "<group>"; };
 		ADAD2F3E16285BDA0013264B /* NSObject+JCSKVOWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JCSKVOWithBlocks.h"; path = "../../NSObject+JCSKVOWithBlocks.h"; sourceTree = "<group>"; };
 		ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JCSKVOWithBlocks.m"; path = "../../NSObject+JCSKVOWithBlocks.m"; sourceTree = "<group>"; };
 		ADAD2F4A162869420013264B /* CommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonMacros.h; path = ../../CommonCode/CommonMacros.h; sourceTree = "<group>"; };
@@ -149,7 +149,8 @@
 		ADAD2F141628577D0013264B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				ADAD2F3A16285AEE0013264B /* KVOWithBlocksTests.m */,
+				ADAD2F4C162876C30013264B /* Test Helpers */,
+				ADAD2F3A16285AEE0013264B /* SynchronousTests.m */,
 				ADAD2F151628577D0013264B /* Supporting Files */,
 			);
 			name = Tests;
@@ -172,6 +173,13 @@
 				ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		ADAD2F4C162876C30013264B /* Test Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Test Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADAD2F3B16285AEE0013264B /* KVOWithBlocksTests.m in Sources */,
+				ADAD2F3B16285AEE0013264B /* SynchronousTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
