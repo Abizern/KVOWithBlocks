@@ -114,6 +114,10 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 #pragma mark - Unregistering for observations
 
 - (void)jcsRemoveObserver:(id)observer {
+    if (!observer) {
+        // It should always be safe to try and remove a nil observer
+        return;
+    }
     ZAssert([observer isMemberOfClass:[JCSKVOObserver class]], @"The observer has to be an instance of JCSKVOObserver");
     
     dispatch_sync([self jcsKVOWithBlocksQueue], ^{

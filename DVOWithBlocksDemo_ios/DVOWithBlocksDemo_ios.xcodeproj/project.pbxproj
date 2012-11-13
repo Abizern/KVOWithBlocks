@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD37735A16525C090030A556 /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
+		AD37735C16525D5D0030A556 /* AsynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */; };
 		ADAD2EEB1628577C0013264B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEA1628577C0013264B /* UIKit.framework */; };
 		ADAD2EED1628577C0013264B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEC1628577C0013264B /* Foundation.framework */; };
 		ADAD2EEF1628577C0013264B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEE1628577C0013264B /* CoreGraphics.framework */; };
@@ -23,8 +25,6 @@
 		ADAD2F111628577D0013264B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEC1628577C0013264B /* Foundation.framework */; };
 		ADAD2F191628577D0013264B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAD2F171628577D0013264B /* InfoPlist.strings */; };
 		ADAD2F3B16285AEE0013264B /* SynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3A16285AEE0013264B /* SynchronousTests.m */; };
-		ADAD2F4016285BDA0013264B /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
-		ADCBF6C91651275A00BEAEC4 /* AsynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */; };
 		ADCBF6CD1651276A00BEAEC4 /* ObservedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6CC1651276A00BEAEC4 /* ObservedClass.m */; };
 /* End PBXBuildFile section */
 
@@ -303,8 +303,6 @@
 				ADAD2EF71628577C0013264B /* main.m in Sources */,
 				ADAD2EFB1628577C0013264B /* AppDelegate.m in Sources */,
 				ADAD2F071628577C0013264B /* ViewController.m in Sources */,
-				ADAD2F4016285BDA0013264B /* NSObject+JCSKVOWithBlocks.m in Sources */,
-				ADCBF6C91651275A00BEAEC4 /* AsynchronousTests.m in Sources */,
 				ADCBF6CD1651276A00BEAEC4 /* ObservedClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAD2F3B16285AEE0013264B /* SynchronousTests.m in Sources */,
+				AD37735A16525C090030A556 /* NSObject+JCSKVOWithBlocks.m in Sources */,
+				AD37735C16525D5D0030A556 /* AsynchronousTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

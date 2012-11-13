@@ -32,7 +32,7 @@ static NSString * const kNumberObservationKey = @"_observee.number";
     self.observedValueAsString = @"";
     _observee = [ObservedClass new];
     _observer = [self jcsAddObserverForKeyPath:kNumberObservationKey withBlock:^(NSDictionary *change){
-        self.observedValueAsString = [NSString stringWithFormat:@"%ld", _observee.number];
+        self.observedValueAsString = [NSString stringWithFormat:@"%ld", (long)_observee.number];
     }];
 
 }
@@ -60,6 +60,13 @@ static NSString * const kNumberObservationKey = @"_observee.number";
     STAssertEqualObjects(self.observedValueAsString, @"2", @"Change in observed value should be handled");
 }
 
+- (void)testMultipleChangesAreHandled {
+    _observee.number = 2;
+    STAssertEqualObjects(self.observedValueAsString, @"2", @"Change in observed value should be handled");
+    _observee.number = 4;
+    STAssertEqualObjects(self.observedValueAsString, @"4", @"Change in observed value should be handled");
+}
+
 - (void)testObserverCanBeRemoved {
     [self jcsRemoveObserver:_observer];
 
@@ -76,7 +83,7 @@ static NSString * const kNumberObservationKey = @"_observee.number";
 
 - (void)testRemovingAnObserverTwiceHandledGracefully {
     id observer2 = [self jcsAddObserverForKeyPath:kNumberObservationKey withBlock:^(NSDictionary *change){
-        self.observedValueAsString = [NSString stringWithFormat:@"%ld", _observee.number];
+        self.observedValueAsString = [NSString stringWithFormat:@"%ld", (long)_observee.number];
     }];
 
     [self jcsRemoveObserver:observer2];
