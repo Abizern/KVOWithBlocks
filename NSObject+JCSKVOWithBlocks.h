@@ -19,7 +19,18 @@
 //  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//  
+//
+
+/** A category on NSObject that allows you observe a keypath passing in a block to
+ execute when the keypath changes instead of using a callback method.
+
+ Why? Blocks are funky. They let you define an action at the same time as you are
+ setting up a observation. In most cases this leads to clearer code than using a
+ callback.
+ 
+ An NSOperationQueue can be passed for the block to run on asynchronously if required.
+ 
+ */
 
 #if !__has_feature(objc_arc)
 #warning "NSObject+JCSKVOWithBlocks only runs under ARC."
@@ -37,9 +48,44 @@ typedef void (^jcsObservationBlock)(NSDictionary *change);
 
 @interface NSObject (JCSKVOWithBlocks)
 
+/** Register to observe a keypath
+ 
+ @return An opaque object reference that is later used to unregister for the observation.
+ @param keyPath The key path, relative to the receiver, of the property to observe. This must not be `nil`.
+ @param options A combination of `NSKeyValueObservingOptions` values that specifies what's included in observation notifications. See `NSKeyValueObservingOptions` in the NSKeyValueObserving Protocol reference
+ @param queue An `NSOperationQueue` queue to run the handler block on. This can be `nil`, in which case the handler will run on the calling thread.
+ @param block A block that takes the change dictionary as a parameter and returns nothing.
+ 
+ This is typedef'd as:
 
+    typedef void (^jcsObservationBlock)(NSDictionary *change);
+ 
+ */
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block;
+
+/** Register to observe changes to a keypath with NSKeyValueObeservingOptionsNew and a block that runs on tha calling thread.
+ 
+ This is equivalent to calling `jcsAddObserverForKeyPath:options:queue:block:` with a nil queue and NSKeyValueObservingOptionsNew as the options paramater
+ 
+ @return An opaque object reference that is later used to unregister for the observation.
+ @param keyPath The key path, relative to the receiver, of the property to observe. This must not be `nil`.
+ @param block A block that takes the change dictionary as a parameter and returns nothing.
+
+ This is typedef'd as:
+
+ typedef void (^jcsObservationBlock)(NSDictionary *change);
+
+ */
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath withBlock:(jcsObservationBlock)block;
+
+/** Unregister an observer
+ 
+ A good place to do this is in the `dealloc` method
+ 
+ @return None
+ @param observer The opaque object reference that was returned when registering for observations
+ 
+ */
 - (void)jcsRemoveObserver:(id)observer;
 
 @end
