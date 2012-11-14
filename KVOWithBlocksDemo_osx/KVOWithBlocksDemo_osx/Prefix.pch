@@ -1,6 +1,0 @@
-//
-// Prefix header for all source files of the 'KVOWithBlocksDemo_osx' target in the 'KVOWithBlocksDemo_osx' project
-//
-
-#import <Cocoa/Cocoa.h>
-#import "CommonMacros.h"
