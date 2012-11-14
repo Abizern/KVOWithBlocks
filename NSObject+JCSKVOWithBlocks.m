@@ -108,7 +108,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 }
 
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath withBlock:(jcsObservationBlock)block {
-    return [self jcsAddObserverForKeyPath:keyPath options:0 queue:nil block:block];
+    return [self jcsAddObserverForKeyPath:keyPath options:NSKeyValueObservingOptionNew queue:nil block:block];
 }
 
 #pragma mark - Unregistering for observations

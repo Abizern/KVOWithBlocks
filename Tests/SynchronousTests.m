@@ -54,6 +54,20 @@ static NSString * const kNumberObservationKey = @"_observee.number";
     
 }
 
+- (void)testThatChangeDictionaryContainsNewValue {
+    __block NSString *changeString;
+
+    id observer = [self jcsAddObserverForKeyPath:kNumberObservationKey withBlock:^(NSDictionary *change) {
+        changeString = [[change objectForKey:NSKeyValueChangeNewKey] stringValue];
+    }];
+
+    _observee.number = 3;
+
+    STAssertEqualObjects(changeString, @"3", @"The convenience observer uses the NSKeyValueObservingOptionNew option");
+
+    [self jcsRemoveObserver:observer];
+}
+
 - (void)testChangesToObservedValueHandled {
     
     _observee.number = 2;
