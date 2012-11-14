@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *nlabel;
+@property (weak, nonatomic) IBOutlet UILabel *fibonacciLabel;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
+- (IBAction)sliderValueChanged;
 
 @end

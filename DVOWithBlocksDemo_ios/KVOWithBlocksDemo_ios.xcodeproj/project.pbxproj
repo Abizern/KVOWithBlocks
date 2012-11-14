@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD1443081652A92F006E4BB7 /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
 		AD37735A16525C090030A556 /* NSObject+JCSKVOWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD2F3F16285BDA0013264B /* NSObject+JCSKVOWithBlocks.m */; };
 		AD37735C16525D5D0030A556 /* AsynchronousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCBF6C81651275A00BEAEC4 /* AsynchronousTests.m */; };
 		ADAD2EEB1628577C0013264B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAD2EEA1628577C0013264B /* UIKit.framework */; };
@@ -39,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ADAD2EE61628577C0013264B /* DVOWithBlocksDemo_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVOWithBlocksDemo_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAD2EE61628577C0013264B /* KVOWithBlocksDemo_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KVOWithBlocksDemo_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAD2EEA1628577C0013264B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADAD2EEC1628577C0013264B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADAD2EEE1628577C0013264B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,9 +56,9 @@
 		ADAD2F031628577C0013264B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		ADAD2F051628577C0013264B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ADAD2F061628577C0013264B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		ADAD2F0D1628577D0013264B /* DVOWithBlocksDemo_iosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVOWithBlocksDemo_iosTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAD2F0D1628577D0013264B /* KVOWithBlocksDemo_iosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVOWithBlocksDemo_iosTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAD2F0E1628577D0013264B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		ADAD2F161628577D0013264B /* DVOWithBlocksDemo_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DVOWithBlocksDemo_iosTests-Info.plist"; sourceTree = "<group>"; };
+		ADAD2F161628577D0013264B /* KVOWithBlocksDemo_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KVOWithBlocksDemo_iosTests-Info.plist"; sourceTree = "<group>"; };
 		ADAD2F181628577D0013264B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAD2F3A16285AEE0013264B /* SynchronousTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronousTests.m; path = ../../Tests/SynchronousTests.m; sourceTree = "<group>"; };
 		ADAD2F3E16285BDA0013264B /* NSObject+JCSKVOWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JCSKVOWithBlocks.h"; path = "../../NSObject+JCSKVOWithBlocks.h"; sourceTree = "<group>"; };
@@ -105,8 +106,8 @@
 		ADAD2EE71628577C0013264B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADAD2EE61628577C0013264B /* DVOWithBlocksDemo_ios.app */,
-				ADAD2F0D1628577D0013264B /* DVOWithBlocksDemo_iosTests.octest */,
+				ADAD2EE61628577C0013264B /* KVOWithBlocksDemo_ios.app */,
+				ADAD2F0D1628577D0013264B /* KVOWithBlocksDemo_iosTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +167,7 @@
 		ADAD2F151628577D0013264B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ADAD2F161628577D0013264B /* DVOWithBlocksDemo_iosTests-Info.plist */,
+				ADAD2F161628577D0013264B /* KVOWithBlocksDemo_iosTests-Info.plist */,
 				ADAD2F171628577D0013264B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -193,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADAD2EE51628577C0013264B /* DVOWithBlocksDemo_ios */ = {
+		ADAD2EE51628577C0013264B /* KVOWithBlocksDemo_ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADAD2F1F1628577D0013264B /* Build configuration list for PBXNativeTarget "DVOWithBlocksDemo_ios" */;
+			buildConfigurationList = ADAD2F1F1628577D0013264B /* Build configuration list for PBXNativeTarget "KVOWithBlocksDemo_ios" */;
 			buildPhases = (
 				ADAD2EE21628577C0013264B /* Sources */,
 				ADAD2EE31628577C0013264B /* Frameworks */,
@@ -205,14 +206,14 @@
 			);
 			dependencies = (
 			);
-			name = DVOWithBlocksDemo_ios;
+			name = KVOWithBlocksDemo_ios;
 			productName = DVOWithBlocksDemo_ios;
-			productReference = ADAD2EE61628577C0013264B /* DVOWithBlocksDemo_ios.app */;
+			productReference = ADAD2EE61628577C0013264B /* KVOWithBlocksDemo_ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ADAD2F0C1628577D0013264B /* DVOWithBlocksDemo_iosTests */ = {
+		ADAD2F0C1628577D0013264B /* KVOWithBlocksDemo_iosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADAD2F221628577D0013264B /* Build configuration list for PBXNativeTarget "DVOWithBlocksDemo_iosTests" */;
+			buildConfigurationList = ADAD2F221628577D0013264B /* Build configuration list for PBXNativeTarget "KVOWithBlocksDemo_iosTests" */;
 			buildPhases = (
 				ADAD2F081628577D0013264B /* Sources */,
 				ADAD2F091628577D0013264B /* Frameworks */,
@@ -224,9 +225,9 @@
 			dependencies = (
 				ADAD2F131628577D0013264B /* PBXTargetDependency */,
 			);
-			name = DVOWithBlocksDemo_iosTests;
+			name = KVOWithBlocksDemo_iosTests;
 			productName = DVOWithBlocksDemo_iosTests;
-			productReference = ADAD2F0D1628577D0013264B /* DVOWithBlocksDemo_iosTests.octest */;
+			productReference = ADAD2F0D1628577D0013264B /* KVOWithBlocksDemo_iosTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +239,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Jungle Candy Software";
 			};
-			buildConfigurationList = ADAD2EE01628577C0013264B /* Build configuration list for PBXProject "DVOWithBlocksDemo_ios" */;
+			buildConfigurationList = ADAD2EE01628577C0013264B /* Build configuration list for PBXProject "KVOWithBlocksDemo_ios" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -250,8 +251,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADAD2EE51628577C0013264B /* DVOWithBlocksDemo_ios */,
-				ADAD2F0C1628577D0013264B /* DVOWithBlocksDemo_iosTests */,
+				ADAD2EE51628577C0013264B /* KVOWithBlocksDemo_ios */,
+				ADAD2F0C1628577D0013264B /* KVOWithBlocksDemo_iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,6 +305,7 @@
 				ADAD2EFB1628577C0013264B /* AppDelegate.m in Sources */,
 				ADAD2F071628577C0013264B /* ViewController.m in Sources */,
 				ADCBF6CD1651276A00BEAEC4 /* ObservedClass.m in Sources */,
+				AD1443081652A92F006E4BB7 /* NSObject+JCSKVOWithBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +324,7 @@
 /* Begin PBXTargetDependency section */
 		ADAD2F131628577D0013264B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ADAD2EE51628577C0013264B /* DVOWithBlocksDemo_ios */;
+			target = ADAD2EE51628577C0013264B /* KVOWithBlocksDemo_ios */;
 			targetProxy = ADAD2F121628577D0013264B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -411,7 +413,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
 				INFOPLIST_FILE = DVOWithBlocksDemo_ios/Info.plist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KVOWithBlocksDemo_ios;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -422,7 +424,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
 				INFOPLIST_FILE = DVOWithBlocksDemo_ios/Info.plist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KVOWithBlocksDemo_ios;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -437,8 +439,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/DVOWithBlocksDemo_iosTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
+				PRODUCT_NAME = KVOWithBlocksDemo_iosTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -454,8 +456,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/DVOWithBlocksDemo_iosTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
+				PRODUCT_NAME = KVOWithBlocksDemo_iosTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -464,7 +466,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADAD2EE01628577C0013264B /* Build configuration list for PBXProject "DVOWithBlocksDemo_ios" */ = {
+		ADAD2EE01628577C0013264B /* Build configuration list for PBXProject "KVOWithBlocksDemo_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADAD2F1D1628577D0013264B /* Debug */,
@@ -473,7 +475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADAD2F1F1628577D0013264B /* Build configuration list for PBXNativeTarget "DVOWithBlocksDemo_ios" */ = {
+		ADAD2F1F1628577D0013264B /* Build configuration list for PBXNativeTarget "KVOWithBlocksDemo_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADAD2F201628577D0013264B /* Debug */,
@@ -482,7 +484,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADAD2F221628577D0013264B /* Build configuration list for PBXNativeTarget "DVOWithBlocksDemo_iosTests" */ = {
+		ADAD2F221628577D0013264B /* Build configuration list for PBXNativeTarget "KVOWithBlocksDemo_iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADAD2F231628577D0013264B /* Debug */,
