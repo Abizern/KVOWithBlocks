@@ -3,6 +3,8 @@
 A category on NSObject that allows you observe a keypath passing in a block to
 execute when the keypath changes instead of using a callback method.
 
+This works on iOS and OS X.
+
 Why? Blocks are funky. They let you define an action at the same time as you are
 setting up a observation. In most cases this leads to clearer code than using a
 callback.
@@ -20,7 +22,76 @@ whatever your preferred replacements are.
 
 ## Usage
 
-_Add something here_
+Quite simple, there are only three methods provided by the category
+
+### jcsAddObserverForKeyPath:options:queue:block:
+
+This is the main method for registering for an observer. It takes a keyPath and
+options as is usual for registering KVO observations, but additionally it takes
+an NSOperationQueue and a block. The block is run on the queue when a change is
+obseverved to the key path. If the queue is nil, then the block is run on the
+calling thread.
+
+The block has no return value and is passed in the change dictionary for the
+observation.  It is typedefed as:
+
+```objc
+typedef void (^jcsObservationBlock)(NSDictionary *change);
+```
+
+When registering for observation, an opaque object reference is returned, which
+is used to unregister for the observation.
+
+**Example**
+
+```objc
+// Assume you have an iVar: id _observer to hold the opaque reference
+NSOperationQueue *queue = [NSOperationQueue new];
+_observer =
+[self jcsAddObserverForKeyPath:@"self.stringProperty" options:NSKeyValueObservingOptionNew queue:queue block:^(NSDictionary *change) {
+    NSLog(@"New string value %@", [change objectForKey:NSKeyValueChangeNewKey]);
+}];
+```
+
+### jcsAddObserverForKeyPath:withBlock:
+
+This is a convenience method that runs the provided block on the calling
+queue. The options are `NSKeyValueObservingOptionNew` so that the change
+dictionary has a key of `NSKeyValueChangeNewKey`.
+
+When registering for this observation, an opaque object reference in returned,
+which is used to unregister for the observation.
+
+**Example**
+
+```objc
+// Assume you have an iVar: id _observer to hold the opaque reference
+_observer =
+[self jcsAddObserverForKeyPath:@"self.stringProperty" withBlock:^(NSDictionary *change) {
+    NSLog(@"New string value %@", [change objectForKey:NSKeyValueChangeNewKey]);
+}];
+```
+### jcsRemoveObserver:
+
+This is used to remove the observation object using the opaque reference
+returned when registering. At the very least this should be done in the
+`dealloc` method. It is safe to attempt to unregister an observer that has
+already been unregistered.
+
+**Example**
+
+```objc
+// Assuming an iVar: id _observer
+- (void)dealloc {
+    [self jcsRemoveObserver:_observer];
+}
+```
+
+## Examples
+
+The development branch (the branch structure is described below) contains an
+Xcode Workspace with two example projects that show simple observations for
+blocking and non-blocking observers.
 
 ## Branch structure for submodules
 
@@ -47,7 +118,11 @@ of careful merging.
 To add the development branch rather than master, simply use the -b flag when
 cloning, as shown below.
 
-    git submodule add -b production << URL for repository >>
+    git submodule add -b development
+    https://github.com/Abizern/KVOWithBlocks.git
+
+There are Unit Tests for the category in each of the OS X and iOS projects, but
+these are shared between the two projects.
 
 ### Artefacts
 
