@@ -15,7 +15,7 @@
 
     <header>
       <div class="container">
-        <h1>KVOWithBlocks</h1>
+        <h1>Kvowithblocks</h1>
         <h2>KVO with a block instead of a callback</h2>
 
         <section id="downloads">
@@ -33,13 +33,92 @@
 <p>A category on NSObject that allows you observe a keypath passing in a block to
 execute when the keypath changes instead of using a callback method.</p>
 
+<p>This works on iOS and OS X.</p>
+
 <p>Why? Blocks are funky. They let you define an action at the same time as you are
 setting up a observation. In most cases this leads to clearer code than using a
 callback.</p>
 
-<h2>Usage</h2>
+<h2>Dependencies</h2>
 
-<p><em>Add something here</em></p>
+<ul>
+<li>ARC. This is written to be dropped into a ARC project, there are no macros to
+gracefully handle using it in MRC or GC apps</li>
+<li>Since it needs ARC, it needs OS X 10.7 and iOS 4.</li>
+<li>My <a href="https://gist.github.com/325926">CommonMacros.h</a> file which is available on
+Github. This is used for assertions and logging. Since I have it in all my
+projects it's not an issue with me. If you feel it's too much bother just for
+this small category, then feel free to replace <code>DLog</code>, <code>ALog</code> and <code>ZAssert</code> with
+whatever your preferred replacements are.</li>
+</ul><h2>Usage</h2>
+
+<p>Quite simple, there are only three methods provided by the category</p>
+
+<h3>jcsAddObserverForKeyPath:options:queue:block:</h3>
+
+<p>This is the main method for registering for an observer. It takes a keyPath and
+options as is usual for registering KVO observations, but additionally it takes
+an NSOperationQueue and a block. The block is run on the queue when a change is
+obseverved to the key path. If the queue is nil, then the block is run on the
+calling thread.</p>
+
+<p>The block has no return value and is passed in the change dictionary for the
+observation.  It is typedefed as:</p>
+
+<div class="highlight"><pre><span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">jcsObservationBlock</span><span class="p">)(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">);</span>
+</pre></div>
+
+<p>When registering for observation, an opaque object reference is returned, which
+is used to unregister for the observation.</p>
+
+<p><strong>Example</strong></p>
+
+<div class="highlight"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
+<span class="n">NSOperationQueue</span> <span class="o">*</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSOperationQueue</span> <span class="n">new</span><span class="p">];</span>
+<span class="n">_observer</span> <span class="o">=</span>
+<span class="p">[</span><span class="n">self</span> <span class="nl">jcsAddObserverForKeyPath:</span><span class="s">@"self.stringProperty"</span> <span class="nl">options:</span><span class="n">NSKeyValueObservingOptionNew</span> <span class="nl">queue:</span><span class="n">queue</span> <span class="nl">block:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"New string value %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">change</span> <span class="nl">objectForKey:</span><span class="n">NSKeyValueChangeNewKey</span><span class="p">]);</span>
+<span class="p">}];</span>
+</pre></div>
+
+<h3>jcsAddObserverForKeyPath:withBlock:</h3>
+
+<p>This is a convenience method that runs the provided block on the calling
+queue. The options are <code>NSKeyValueObservingOptionNew</code> so that the change
+dictionary has a key of <code>NSKeyValueChangeNewKey</code>.</p>
+
+<p>When registering for this observation, an opaque object reference in returned,
+which is used to unregister for the observation.</p>
+
+<p><strong>Example</strong></p>
+
+<div class="highlight"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
+<span class="n">_observer</span> <span class="o">=</span>
+<span class="p">[</span><span class="n">self</span> <span class="nl">jcsAddObserverForKeyPath:</span><span class="s">@"self.stringProperty"</span> <span class="nl">withBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"New string value %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">change</span> <span class="nl">objectForKey:</span><span class="n">NSKeyValueChangeNewKey</span><span class="p">]);</span>
+<span class="p">}];</span>
+</pre></div>
+
+<h3>jcsRemoveObserver:</h3>
+
+<p>This is used to remove the observation object using the opaque reference
+returned when registering. At the very least this should be done in the
+<code>dealloc</code> method. It is safe to attempt to unregister an observer that has
+already been unregistered.</p>
+
+<p><strong>Example</strong></p>
+
+<div class="highlight"><pre><span class="c1">// Assuming an iVar: id _observer</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">jcsRemoveObserver:</span><span class="n">_observer</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>Examples</h2>
+
+<p>The development branch (the branch structure is described below) contains an
+Xcode Workspace with two example projects that show simple observations for
+blocking and non-blocking observers.</p>
 
 <h2>Branch structure for submodules</h2>
 
@@ -66,8 +145,12 @@ of careful merging.</p>
 <p>To add the development branch rather than master, simply use the -b flag when
 cloning, as shown below.</p>
 
-<pre><code>git submodule add -b production &lt;&lt; URL for repository &gt;&gt;
+<pre><code>git submodule add -b development
+https://github.com/Abizern/KVOWithBlocks.git
 </code></pre>
+
+<p>There are Unit Tests for the category in each of the OS X and iOS projects, but
+these are shared between the two projects.</p>
 
 <h3>Artefacts</h3>
 
@@ -98,6 +181,6 @@ your own block based replacements.</p>
       </section>
     </div>
 
-
+    
   </body>
 </html>
