@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _queue = [NSOperationQueue new];
-	self.nlabel.text = @"0";
+    self.nlabel.text = @"0";
     self.fibonacciLabel.text = @"";
     self.slider.value = 0.0f;
     self.spinner.hidden = YES;
@@ -33,7 +33,7 @@
     /////////////////////////////////////////////////////////////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////////////////
-    // Non-blocking
+    // Non-blocking observer
     /////////////////////////////////////////////////////////////////////////////////////
 
     _nLabelObserver = [self jcsAddObserverForKeyPath:@"self.nlabel.text" options:NSKeyValueObservingOptionNew queue:_queue block:^(NSDictionary *change) {
@@ -41,7 +41,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self startSpinner];
         });
-        
+
         NSUInteger n = [self.nlabel.text integerValue];
         NSUInteger fibN = [self fibonacciNumber:n];
 
@@ -52,7 +52,7 @@
     }];
 
     /////////////////////////////////////////////////////////////////////////////////////
-    // Blocking
+    // Blocking observer
     /////////////////////////////////////////////////////////////////////////////////////
 
 //    _nLabelObserver = [self jcsAddObserverForKeyPath:@"self.nlabel.text" withBlock:^(NSDictionary *change) {
@@ -84,6 +84,7 @@
 
 #pragma mark - Private methods
 
+// This is an intentionally poor fibonacci series generator
 - (NSUInteger)fibonacciNumber:(NSUInteger)n {
     if (n < 2) {
         return n;

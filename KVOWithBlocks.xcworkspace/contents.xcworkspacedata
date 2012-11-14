@@ -15,6 +15,6 @@
       location = "group:KVOWithBlocksDemo_osx/KVOWithBlocksDemo_osx.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DVOWithBlocksDemo_ios/KVOWithBlocksDemo_ios.xcodeproj">
+      location = "group:KVOWithBlocksDemo_ios/KVOWithBlocksDemo_ios.xcodeproj">
    </FileRef>
 </Workspace>

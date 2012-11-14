@@ -35,7 +35,7 @@
 			containerPortal = ADAD2EDD1628577C0013264B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = ADAD2EE51628577C0013264B;
-			remoteInfo = DVOWithBlocksDemo_ios;
+			remoteInfo = KVOWithBlocksDemo_ios;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -96,7 +96,7 @@
 		ADAD2EDB1628577C0013264B = {
 			isa = PBXGroup;
 			children = (
-				ADAD2EF01628577C0013264B /* DVOWithBlocksDemo_ios */,
+				ADAD2EF01628577C0013264B /* KVOWithBlocksDemo_ios */,
 				ADAD2F141628577D0013264B /* Tests */,
 				ADAD2EE91628577C0013264B /* Frameworks */,
 				ADAD2EE71628577C0013264B /* Products */,
@@ -123,7 +123,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ADAD2EF01628577C0013264B /* DVOWithBlocksDemo_ios */ = {
+		ADAD2EF01628577C0013264B /* KVOWithBlocksDemo_ios */ = {
 			isa = PBXGroup;
 			children = (
 				ADAD2EF91628577C0013264B /* AppDelegate.h */,
@@ -134,7 +134,7 @@
 				ADAD2F3D16285BA40013264B /* Category */,
 				ADAD2EF11628577C0013264B /* Supporting Files */,
 			);
-			path = DVOWithBlocksDemo_ios;
+			path = KVOWithBlocksDemo_ios;
 			sourceTree = "<group>";
 		};
 		ADAD2EF11628577C0013264B /* Supporting Files */ = {
@@ -161,7 +161,7 @@
 				ADAD2F151628577D0013264B /* Supporting Files */,
 			);
 			name = Tests;
-			path = DVOWithBlocksDemo_iosTests;
+			path = KVOWithBlocksDemo_iosTests;
 			sourceTree = "<group>";
 		};
 		ADAD2F151628577D0013264B /* Supporting Files */ = {
@@ -207,7 +207,7 @@
 			dependencies = (
 			);
 			name = KVOWithBlocksDemo_ios;
-			productName = DVOWithBlocksDemo_ios;
+			productName = KVOWithBlocksDemo_ios;
 			productReference = ADAD2EE61628577C0013264B /* KVOWithBlocksDemo_ios.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -226,7 +226,7 @@
 				ADAD2F131628577D0013264B /* PBXTargetDependency */,
 			);
 			name = KVOWithBlocksDemo_iosTests;
-			productName = DVOWithBlocksDemo_iosTests;
+			productName = KVOWithBlocksDemo_iosTests;
 			productReference = ADAD2F0D1628577D0013264B /* KVOWithBlocksDemo_iosTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
@@ -411,8 +411,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = DVOWithBlocksDemo_ios/Info.plist;
+				GCC_PREFIX_HEADER = KVOWithBlocksDemo_ios/Prefix.pch;
+				INFOPLIST_FILE = KVOWithBlocksDemo_ios/Info.plist;
 				PRODUCT_NAME = KVOWithBlocksDemo_ios;
 				WRAPPER_EXTENSION = app;
 			};
@@ -422,8 +422,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = DVOWithBlocksDemo_ios/Info.plist;
+				GCC_PREFIX_HEADER = KVOWithBlocksDemo_ios/Prefix.pch;
+				INFOPLIST_FILE = KVOWithBlocksDemo_ios/Info.plist;
 				PRODUCT_NAME = KVOWithBlocksDemo_ios;
 				WRAPPER_EXTENSION = app;
 			};
@@ -432,14 +432,14 @@
 		ADAD2F231628577D0013264B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DVOWithBlocksDemo_ios.app/DVOWithBlocksDemo_ios";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KVOWithBlocksDemo_ios.app/KVOWithBlocksDemo_ios";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
+				GCC_PREFIX_HEADER = KVOWithBlocksDemo_ios/Prefix.pch;
+				INFOPLIST_FILE = "KVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
 				PRODUCT_NAME = KVOWithBlocksDemo_iosTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -449,14 +449,14 @@
 		ADAD2F241628577D0013264B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DVOWithBlocksDemo_ios.app/DVOWithBlocksDemo_ios";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KVOWithBlocksDemo_ios.app/KVOWithBlocksDemo_ios";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DVOWithBlocksDemo_ios/Prefix.pch;
-				INFOPLIST_FILE = "DVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
+				GCC_PREFIX_HEADER = KVOWithBlocksDemo_ios/Prefix.pch;
+				INFOPLIST_FILE = "KVOWithBlocksDemo_iosTests/KVOWithBlocksDemo_iosTests-Info.plist";
 				PRODUCT_NAME = KVOWithBlocksDemo_iosTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
