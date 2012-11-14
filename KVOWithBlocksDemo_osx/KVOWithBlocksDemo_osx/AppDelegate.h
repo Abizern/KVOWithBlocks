@@ -11,5 +11,9 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSSlider *slider;
+@property (weak) IBOutlet NSTextField *nLabel;
+@property (weak) IBOutlet NSTextField *fibonacciLabel;
+@property (weak) IBOutlet NSProgressIndicator *spinner;
 
 @end
