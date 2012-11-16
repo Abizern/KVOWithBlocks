@@ -118,8 +118,7 @@ of careful merging.
 To add the development branch rather than master, simply use the -b flag when
 cloning, as shown below.
 
-    git submodule add -b development
-    https://github.com/Abizern/KVOWithBlocks.git
+    git submodule add -b development https://github.com/Abizern/KVOWithBlocks.git
 
 There are Unit Tests for the category in each of the OS X and iOS projects, but
 these are shared between the two projects.
