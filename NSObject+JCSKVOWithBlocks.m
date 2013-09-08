@@ -22,6 +22,12 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#ifndef DEBUG
+    #ifndef NS_BLOCK_ASSERTIONS
+        #define NS_BLOCK_ASSERTIONS
+    #endif
+#endif
+
 // The context for a KVO observations
 static NSString * const JCSKVOWithBlocksObservationContext = @"JCSKVOWithBlocksObservationContext";
 
@@ -31,7 +37,6 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 
 #import "NSObject+JCSKVOWithBlocks.h"
 #import <objc/runtime.h>
-#import "CommonMacros.h"
 
 #pragma mark JCSKVOObserver
 
@@ -118,7 +123,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
         // It should always be safe to try and remove a nil observer
         return;
     }
-    ZAssert([observer isMemberOfClass:[JCSKVOObserver class]], @"The observer has to be an instance of JCSKVOObserver");
+    NSAssert([observer isMemberOfClass:[JCSKVOObserver class]], @"The observer has to be an instance of JCSKVOObserver");
     
     dispatch_sync([self jcsKVOWithBlocksQueue], ^{
         NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
@@ -146,8 +151,3 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 }
 
 @end
-
-// Make sure dependencies are set up
-#ifndef jcscommonmacros
-#warning "NSObject+JCSKVOWithBlocks needs to import the CommonMacros.h file, which is available at https://gist.github.com/325926"
-#endif

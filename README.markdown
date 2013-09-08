@@ -14,11 +14,6 @@ callback.
 + ARC. This is written to be dropped into a ARC project, there are no macros to
 gracefully handle using it in MRC or GC apps
 + Since it needs ARC, it needs OS X 10.7 and iOS 4.
-+ My [CommonMacros.h](https://gist.github.com/325926) file which is available on
-Github. This is used for assertions and logging. Since I have it in all my
-projects it's not an issue with me. If you feel it's too much bother just for
-this small category, then feel free to replace `DLog`, `ALog` and `ZAssert` with
-whatever your preferred replacements are.
 
 ## Usage
 
