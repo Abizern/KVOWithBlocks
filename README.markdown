@@ -17,7 +17,18 @@ gracefully handle using it in MRC or GC apps
 
 ## Usage
 
-Quite simple, there are only three methods provided by the category
+Quite simple. You register an observer and pass it a block which is run whenever
+the observation is fired. The methods that add an observer return an object of
+type `id` that you hold on to. This is only used to unregister as an
+observer. It is safe to remove an observer twice; this category takes care of
+it.
+
+You may wonder why there is an optional method for adding an `NSOperationQueue`
+for the block to be run on rather than a GCD queue; this is because if you want
+to run your block on a different GCD queue this can be configured within the
+block itself.
+
+There are only three methods provided by the category
 
 ### jcsAddObserverForKeyPath:options:queue:block:
 
