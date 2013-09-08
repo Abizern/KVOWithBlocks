@@ -38,12 +38,6 @@
 
 typedef void (^jcsObservationBlock)(NSDictionary *change);
 
-// Define the version for this category
-#ifndef nsobject_jcskvowithblocks
-#define nsobject_jcskvowithblocks_1_0  10000
-#define nsobject_jcskvowithblocks      nsobject_jcskvowithblocks_1_0
-#endif
-
 #import <Foundation/Foundation.h>
 
 @interface NSObject (JCSKVOWithBlocks)
