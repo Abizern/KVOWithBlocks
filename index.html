@@ -60,7 +60,18 @@ gracefully handle using it in MRC or GC apps</li>
 </ul><h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>Quite simple, there are only three methods provided by the category</p>
+<p>Quite simple. You register an observer and pass it a block which is run whenever
+the observation is fired. The methods that add an observer return an object of
+type <code>id</code> that you hold on to. This is only used to unregister as an
+observer. It is safe to remove an observer twice; this category takes care of
+it.</p>
+
+<p>You may wonder why there is an optional method for adding an <code>NSOperationQueue</code>
+for the block to be run on rather than a GCD queue; this is because if you want
+to run your block on a different GCD queue this can be configured within the
+block itself.</p>
+
+<p>There are only three methods provided by the category</p>
 
 <h3>
 <a name="jcsaddobserverforkeypathoptionsqueueblock" class="anchor" href="#jcsaddobserverforkeypathoptionsqueueblock"><span class="octicon octicon-link"></span></a>jcsAddObserverForKeyPath:options:queue:block:</h3>
