@@ -37,7 +37,6 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 
 #import "NSObject+JCSKVOWithBlocks.h"
 #import <objc/runtime.h>
-#import "CommonMacros.h"
 
 #pragma mark JCSKVOObserver
 
