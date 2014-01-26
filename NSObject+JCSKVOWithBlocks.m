@@ -28,15 +28,15 @@
     #endif
 #endif
 
+#import "NSObject+JCSKVOWithBlocks.h"
+#import <objc/runtime.h>
+
 // The context for a KVO observations
 static NSString * const JCSKVOWithBlocksObservationContext = @"JCSKVOWithBlocksObservationContext";
 
 // The key under which the array of observers is stored in associated objects
 static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.junglecandy.jcskvowithblocks";
 
-
-#import "NSObject+JCSKVOWithBlocks.h"
-#import <objc/runtime.h>
 
 #pragma mark JCSKVOObserver
 
