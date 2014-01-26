@@ -29,7 +29,7 @@
 #endif
 
 // The context for a KVO observations
-static NSString * const JCSKVOWithBlocksObservationContext = @"JCSKVOWithBlocksObservationContext";
+static void* kJCSKVOWithBlocksObservationContext = &kJCSKVOWithBlocksObservationContext;
 
 // The key under which the array of observers is stored in associated objects
 static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.junglecandy.jcskvowithblocks";
@@ -72,7 +72,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 #pragma mark - NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (!(context == (__bridge void *)(JCSKVOWithBlocksObservationContext))) {
+    if (context != kJCSKVOWithBlocksObservationContext) {
         return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 
@@ -96,7 +96,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block {
     id observer = [[JCSKVOObserver alloc] initWithKeyPath:keyPath options:options queue:queue block:block];
 
-    [self addObserver:observer forKeyPath:keyPath options:options context:(__bridge void *)(JCSKVOWithBlocksObservationContext)];
+    [self addObserver:observer forKeyPath:keyPath options:options context: kJCSKVOWithBlocksObservationContext];
 
     dispatch_sync([self jcsKVOWithBlocksQueue], ^{
         NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
