@@ -61,10 +61,13 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
     NSParameterAssert(block);
 
     self = [super init];
-    _observedKeyPath = [keyPath copy];
-    _options = options;
-    _queue = queue;
-    _block = [block copy];
+	if( self )
+	{
+		_observedKeyPath = [keyPath copy];
+		_options = options;
+		_queue = queue;
+		_block = [block copy];
+	}
 
     return self;
 }
