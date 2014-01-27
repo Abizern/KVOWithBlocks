@@ -34,6 +34,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+/** Block signature for observations. Takes the change dictionary as a parmeter
+ */
 typedef void (^jcsObservationBlock)(NSDictionary *change);
 
 @interface NSObject (JCSKVOWithBlocks)
@@ -44,26 +47,18 @@ typedef void (^jcsObservationBlock)(NSDictionary *change);
  @param keyPath The key path, relative to the receiver, of the property to observe. This must not be `nil`.
  @param options A combination of `NSKeyValueObservingOptions` values that specifies what's included in observation notifications. See `NSKeyValueObservingOptions` in the NSKeyValueObserving Protocol reference
  @param queue An `NSOperationQueue` queue to run the handler block on. This can be `nil`, in which case the handler will run on the calling thread.
- @param block A block that takes the change dictionary as a parameter and returns nothing.
- 
- This is typedef'd as:
-
-    typedef void (^jcsObservationBlock)(NSDictionary *change);
+ @param block block A block of type jcsObservationBlock
  
  */
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block;
 
-/** Register to observe changes to a keypath with NSKeyValueObeservingOptionsNew and a block that runs on tha calling thread.
+/** Register to observe changes to a keypath with NSKeyValueObeservingOptionsNew and a block that runs on the calling thread.
  
  This is equivalent to calling `jcsAddObserverForKeyPath:options:queue:block:` with a nil queue and NSKeyValueObservingOptionsNew as the options paramater
  
  @return An opaque object reference that is later used to unregister for the observation.
  @param keyPath The key path, relative to the receiver, of the property to observe. This must not be `nil`.
- @param block A block that takes the change dictionary as a parameter and returns nothing.
-
- This is typedef'd as:
-
- typedef void (^jcsObservationBlock)(NSDictionary *change);
+ @param block A block of type jcsObservationBlock
 
  */
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath withBlock:(jcsObservationBlock)block;
