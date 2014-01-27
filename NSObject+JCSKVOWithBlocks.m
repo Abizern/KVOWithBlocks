@@ -32,10 +32,10 @@
 #import <objc/runtime.h>
 
 // The context for a KVO observations
-static NSString * const JCSKVOWithBlocksObservationContext = @"JCSKVOWithBlocksObservationContext";
+static void* kJCSKVOWithBlocksObservationContext = &kJCSKVOWithBlocksObservationContext;
 
 // The key under which the array of observers is stored in associated objects
-static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.junglecandy.jcskvowithblocks";
+static void* kJCSKVOWithBlocksObserverAssociatedObjectKey = &kJCSKVOWithBlocksObserverAssociatedObjectKey;
 
 
 #pragma mark JCSKVOObserver
@@ -61,10 +61,13 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
     NSParameterAssert(block);
 
     self = [super init];
-    _observedKeyPath = [keyPath copy];
-    _options = options;
-    _queue = queue;
-    _block = [block copy];
+	if( self )
+	{
+		_observedKeyPath = [keyPath copy];
+		_options = options;
+		_queue = queue;
+		_block = [block copy];
+	}
 
     return self;
 }
@@ -72,7 +75,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 #pragma mark - NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (!(context == (__bridge void *)(JCSKVOWithBlocksObservationContext))) {
+    if (context != kJCSKVOWithBlocksObservationContext) {
         return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 
@@ -96,14 +99,14 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block {
     id observer = [[JCSKVOObserver alloc] initWithKeyPath:keyPath options:options queue:queue block:block];
 
-    [self addObserver:observer forKeyPath:keyPath options:options context:(__bridge void *)(JCSKVOWithBlocksObservationContext)];
+    [self addObserver:observer forKeyPath:keyPath options:options context: kJCSKVOWithBlocksObservationContext];
 
     dispatch_sync([self jcsKVOWithBlocksQueue], ^{
-        NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
+        NSMutableArray *observers = objc_getAssociatedObject(self, kJCSKVOWithBlocksObserverAssociatedObjectKey);
 
         if (!observers) {
             observers = [NSMutableArray new];
-            objc_setAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey), observers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, kJCSKVOWithBlocksObserverAssociatedObjectKey, observers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
 
         [observers addObject:observer];
@@ -126,7 +129,7 @@ static NSString * const JCSKVOWithBlocksObserverAssociatedObjectKey = @"com.jung
     NSAssert([observer isMemberOfClass:[JCSKVOObserver class]], @"The observer has to be an instance of JCSKVOObserver");
     
     dispatch_sync([self jcsKVOWithBlocksQueue], ^{
-        NSMutableArray *observers = objc_getAssociatedObject(self, (__bridge const void *)(JCSKVOWithBlocksObserverAssociatedObjectKey));
+        NSMutableArray *observers = objc_getAssociatedObject(self, kJCSKVOWithBlocksObserverAssociatedObjectKey);
 
         if (!observers || ![observers containsObject:observer]) {
             return;
