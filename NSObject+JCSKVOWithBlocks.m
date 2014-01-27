@@ -22,6 +22,10 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#if !__has_feature(objc_arc)
+#warning "NSObject+JCSKVOWithBlocks only runs under ARC."
+#endif
+
 #ifndef DEBUG
     #ifndef NS_BLOCK_ASSERTIONS
         #define NS_BLOCK_ASSERTIONS

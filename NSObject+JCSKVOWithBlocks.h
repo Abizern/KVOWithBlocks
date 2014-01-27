@@ -34,10 +34,6 @@
 
 #import <Foundation/Foundation.h>
 
-#if !__has_feature(objc_arc)
-#warning "NSObject+JCSKVOWithBlocks only runs under ARC."
-#endif
-
 typedef void (^jcsObservationBlock)(NSDictionary *change);
 
 @interface NSObject (JCSKVOWithBlocks)
