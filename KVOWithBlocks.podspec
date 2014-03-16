@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KVOWithBlocks"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "KVO with blocks instead of callbacks."
 
   s.description = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://abizern.org/KVOWithBlocks/"
   s.license      = 'MIT'
   s.author       = { "Abizer Nasir" => "abizern@abizern.org" }
-  s.source       = { :git => "https://github.com/Abizern/KVOWithBlocks.git", :tag => "1.0.0" }
-  s.source_files = '*.{h,m}'
+  s.source       = { :git => "https://github.com/Abizern/KVOWithBlocks.git", :tag => s.version.to_s }
+  s.source_files = 'NSObject+JCSKVOWithBlocks.{h,m}'
   s.requires_arc = true
 end
