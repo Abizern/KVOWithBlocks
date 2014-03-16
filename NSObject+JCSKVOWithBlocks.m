@@ -64,7 +64,6 @@ static void* kJCSKVOWithBlocksObserverAssociatedObjectKey = &kJCSKVOWithBlocksOb
     // It doesn't make sense to pass nil instead of a block for this category
     NSParameterAssert(block);
 
-    self = [super init];
 	if(!(self = [super init])) {
         return nil; // Bail!
 	}
