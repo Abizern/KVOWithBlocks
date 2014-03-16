@@ -1,43 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
     <title>Kvowithblocks by Abizern</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/Abizern/KVOWithBlocks">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/Abizern/KVOWithBlocks/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/Abizern/KVOWithBlocks/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <header>
+      <div class="container">
+        <h1>Kvowithblocks</h1>
+        <h2>KVO with a block instead of a callback</h2>
 
-      <section>
-        <div id="title">
-          <h1>Kvowithblocks</h1>
-          <p>KVO with a block instead of a callback</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/Abizern">Abizern</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+        <section id="downloads">
+          <a href="https://github.com/Abizern/KVOWithBlocks/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/Abizern/KVOWithBlocks/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/Abizern/KVOWithBlocks" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
         <h1>
 <a name="kvowithblocks" class="anchor" href="#kvowithblocks"><span class="octicon octicon-link"></span></a>KVOWithBlocks</h1>
 
@@ -85,7 +75,7 @@ calling thread.</p>
 <p>The block has no return value and is passed in the change dictionary for the
 observation.  It is typedefed as:</p>
 
-<div class="highlight"><pre><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">^</span><span class="n">jcsObservationBlock</span><span class="p">)(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">);</span>
+<div class="highlight highlight-objc"><pre><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">^</span><span class="n">jcsObservationBlock</span><span class="p">)(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">);</span>
 </pre></div>
 
 <p>When registering for observation, an opaque object reference is returned, which
@@ -93,7 +83,7 @@ is used to unregister for the observation.</p>
 
 <p><strong>Example</strong></p>
 
-<div class="highlight"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
+<div class="highlight highlight-objc"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
 <span class="n">NSOperationQueue</span> <span class="o">*</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSOperationQueue</span> <span class="n">new</span><span class="p">];</span>
 <span class="n">_observer</span> <span class="o">=</span>
 <span class="p">[</span><span class="n">self</span> <span class="n">jcsAddObserverForKeyPath</span><span class="o">:</span><span class="s">@"self.stringProperty"</span> <span class="n">options</span><span class="o">:</span><span class="n">NSKeyValueObservingOptionNew</span> <span class="n">queue</span><span class="o">:</span><span class="n">queue</span> <span class="n">block</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">)</span> <span class="p">{</span>
@@ -113,7 +103,7 @@ which is used to unregister for the observation.</p>
 
 <p><strong>Example</strong></p>
 
-<div class="highlight"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
+<div class="highlight highlight-objc"><pre><span class="c1">// Assume you have an iVar: id _observer to hold the opaque reference</span>
 <span class="n">_observer</span> <span class="o">=</span>
 <span class="p">[</span><span class="n">self</span> <span class="n">jcsAddObserverForKeyPath</span><span class="o">:</span><span class="s">@"self.stringProperty"</span> <span class="n">withBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">change</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@"New string value %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">change</span> <span class="n">objectForKey</span><span class="o">:</span><span class="n">NSKeyValueChangeNewKey</span><span class="p">]);</span>
@@ -130,7 +120,7 @@ already been unregistered.</p>
 
 <p><strong>Example</strong></p>
 
-<div class="highlight"><pre><span class="c1">// Assuming an iVar: id _observer</span>
+<div class="highlight highlight-objc"><pre><span class="c1">// Assuming an iVar: id _observer</span>
 <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">self</span> <span class="n">jcsRemoveObserver</span><span class="o">:</span><span class="n">_observer</span><span class="p">];</span>
 <span class="p">}</span>
@@ -207,9 +197,8 @@ your own block based replacements.</p>
 <a href="https://github.com/dannygreg/DGKVOBlocks">DGKVOBlocks</a> by Danny Greg</li>
 </ul><p>I make no apologies for taking the bits I like from them.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
