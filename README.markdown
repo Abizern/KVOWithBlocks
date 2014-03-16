@@ -15,6 +15,25 @@ callback.
 gracefully handle using it in MRC or GC apps
 + Since it needs ARC, it needs OS X 10.7 and iOS 4.
 
+## Installation
+
+### Git submodules
+
+If you just want to include the category in your project using submodules, me
+sure to add the master branch as the submodule. The reason for this is described
+further on in this document.
+
+### CocoaPods
+
+This is also available as a CocoaPod. If you are a Podder, you already know what
+to do.
+
+### Add the category directly
+
+You could just add the `NSObject+JCSKVOWithBlocks.h` and
+`NSObject+JCSKVOWithBlocks.m` files to your project directy, but either of the
+other two methods is preferable.
+
 ## Usage
 
 Quite simple, there are only three methods provided by the category
