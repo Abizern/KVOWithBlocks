@@ -47,7 +47,7 @@ typedef void (^jcsObservationBlock)(NSDictionary *change);
  @param keyPath The key path, relative to the receiver, of the property to observe. This must not be `nil`.
  @param options A combination of `NSKeyValueObservingOptions` values that specifies what's included in observation notifications. See `NSKeyValueObservingOptions` in the NSKeyValueObserving Protocol reference
  @param queue An `NSOperationQueue` queue to run the handler block on. This can be `nil`, in which case the handler will run on the calling thread.
- @param block block A block of type jcsObservationBlock
+ @param block A block of type jcsObservationBlock
  
  */
 - (id)jcsAddObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options queue:(NSOperationQueue *)queue block:(jcsObservationBlock)block;

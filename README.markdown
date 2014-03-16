@@ -101,8 +101,6 @@ the one to use if you want to add it as a submodule to your project. This should
 be treated as a readonly branch. *do not perform any development on this
 branch*.
 
-if you are using this as a submodule, keep up to date with the latest changes by
-
 ### The development branch
 
 The development branch contains the category files as well as Xcode projects for
