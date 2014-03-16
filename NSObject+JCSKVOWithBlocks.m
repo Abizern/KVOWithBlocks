@@ -2,7 +2,7 @@
 //  NSObject+JCSKVOWithBlocks.m
 //  
 //
-//  Copyright (c) 2012 Abizer Nasir, Jungle Candy Software
+//  Copyright (c) 2012-2014 Abizer Nasir, Jungle Candy Software
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of
 //  this software and associated documentation files (the "Software"), to deal in
@@ -64,14 +64,14 @@ static void* kJCSKVOWithBlocksObserverAssociatedObjectKey = &kJCSKVOWithBlocksOb
     // It doesn't make sense to pass nil instead of a block for this category
     NSParameterAssert(block);
 
-    self = [super init];
-	if( self )
-	{
-		_observedKeyPath = [keyPath copy];
-		_options = options;
-		_queue = queue;
-		_block = [block copy];
+	if(!(self = [super init])) {
+        return nil; // Bail!
 	}
+
+    _observedKeyPath = [keyPath copy];
+    _options = options;
+    _queue = queue;
+    _block = [block copy];
 
     return self;
 }
@@ -147,9 +147,9 @@ static void* kJCSKVOWithBlocksObserverAssociatedObjectKey = &kJCSKVOWithBlocksOb
 #pragma mark - Private methods
 
 - (dispatch_queue_t)jcsKVOWithBlocksQueue {
-    static dispatch_queue_t queue = NULL;
-    static dispatch_once_t onceToken;
+    static dispatch_queue_t queue = nil;
 
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         queue = dispatch_queue_create("com.junglecandy.jcskvowithblocksqueue", 0);
     });
